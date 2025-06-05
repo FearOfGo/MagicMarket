@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <title>Lista de Cartas</title>
+    <a href="{% url 'nueva_carta' %}" style="color:#0af; display:inline-block; margin-bottom: 10px;">Agregar nueva carta</a>
+    <style>
+      body { font-family: Arial, sans-serif; background: #121212; color: #eee; }
+      .carta { border: 1px solid #444; padding: 10px; margin: 10px; border-radius: 5px; background: #222; }
+      img { max-width: 150px; }
+    </style>
+</head>
+<body>
+    <h1>Cartas disponibles</h1>
+
+    {% for carta in cartas %}
+      <div class="carta">
+        <h2>{{ carta.nombre }} ({{ carta.edicion }})</h2>
+        <p><strong>Tipo:</strong> {{ carta.tipo }}</p>
+        <p><strong>Estado:</strong> {{ carta.get_estado_display }}</p>
+        <p><strong>Precio:</strong> ${{ carta.precio }}</p>
+        {% if carta.imagen %}
+          <img src="{{ carta.imagen.url }}" alt="{{ carta.nombre }}" />
+        {% endif %}
+        <p>{{ carta.descripcion }}</p>
+      </div>
+    {% empty %}
+      <p>No hay cartas para mostrar.</p>
+    {% endfor %}
+</body>
+</html>

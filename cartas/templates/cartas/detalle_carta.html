@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ carta.nombre}}</title>
+</head>
+<body>
+    <h1>
+        {{ carta.nombre}} ({{ carta.edicion}})
+    </h1>
+    <img src="{{ carta.imagen.url }}" width="200">
+    <p>
+        {{ carta.descripcion}}
+    </p>
+    <a href="{% url 'lista_cartas' %}">Volver a la lista</a>
+</body>
+</html>

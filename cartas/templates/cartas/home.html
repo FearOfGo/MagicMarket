@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>MagicMarket - Inicio</title>
+</head>
+<body>
+    <header>
+        <h1>MagicMarket</h1>
+        <nav>
+            {% if user.is_authenticated %}
+                <span>Bienvenido, {{ user.username }}</span> |
+                <a href="{% url 'logout' %}">Cerrar sesión</a> |
+                <a href="{% url 'publicar_carta' %}">Publicar Carta</a> |
+                <a href="{% url 'perfil' %}">Mi Perfil</a>
+            {% else %}
+                <a href="{% url 'login' %}">Iniciar sesión</a> |
+                <a href="{% url 'register' %}">Registrarse</a>
+            {% endif %}
+        </nav>
+        <form method="get" action="{% url 'buscar_cartas' %}">
+            <input type="text" name="q" placeholder="Buscar carta...">
+            <button type="submit">Buscar</button>
+        </form>
+    </header>
+
+    <main>
+        <h2>Cartas más buscadas</h2>
+        <ul>
+            {% for carta in cartas_populares %}
+                <li>
+                    <a href="{% url 'detalle_carta' carta.id %}">
+                        {{ carta.nombre }} ({{ carta.edicion }}) - ${{ carta.precio }}
+                    </a>
+                </li>
+            {% empty %}
+                <li>No hay cartas populares aún.</li>
+            {% endfor %}
+        </ul>
+    </main>
+</body>
+</html>
