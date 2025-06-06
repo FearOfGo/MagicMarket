@@ -18,6 +18,8 @@ class Carta(models.Model):
     precio = models.DecimalField(max_digits=10, decimal_places=2)
     descripcion = models.TextField(blank=True)
 
+
+
     en_venta = models.BooleanField(default=True)
     vendida = models.BooleanField(default=False)
     fecha_agregada = models.DateTimeField(auto_now_add=True)
@@ -26,6 +28,6 @@ class Carta(models.Model):
 
     def __str__(self):
         return f"{self.nombre} ({self.edicion})"
-        
+
     class Meta:
         ordering = ['-fecha_agregada']

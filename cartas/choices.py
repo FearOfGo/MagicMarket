@@ -1,4 +1,4 @@
-ESTADOS_CARTAS: = [
+ESTADOS_CARTAS = [
     ('NM', 'Near Mint'),
     ('PL', 'Played'),
     ('DM', 'Damaged'),
