@@ -5,9 +5,11 @@ from .forms import CartaForm
 
 def home(request):
     cartas_populares = Carta.objects.order_by('-visitas')[:10]
+    usuarios_top = User.objects.all()[:5]
+    
     contexto = {
         'cartas_populares': cartas_populares,
-        'noticias':[],
+        'usuarios_top' : usuarios_top
     }
     return render(request, 'cartas/home.html', contexto)
 
