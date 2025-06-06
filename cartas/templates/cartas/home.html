@@ -1,4 +1,5 @@
 {% load static %}
+{% load static custom_filters %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -33,23 +34,35 @@
   <h3 class="mb-3">Cartas más vistas</h3>
   <div id="cartasCarousel" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
-      {% for carta in cartas_populares %}
+
+      {# Agrupamos las cartas en bloques de 3 para mostrar 3 por slide #}
+      {% for group in cartas_populares|slice:":9"|batch:3 %}
       <div class="carousel-item {% if forloop.first %}active{% endif %}">
         <div class="d-flex justify-content-center">
-          <img src="{{ carta.imagen.url }}" class="d-block" style="max-height: 400px; max-width: 100%; object-fit: contain;" alt="{{ carta.nombre }}">
-        </div>
-        <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
-          <h5>{{ carta.nombre }}</h5>
-          <p>{{ carta.descripcion|truncatechars:100 }}</p>
+
+          {% for carta in group %}
+          <div class="card mx-2" style="width: 18rem;">
+            <img src="{{ carta.imagen.url }}" class="card-img-top" alt="{{ carta.nombre }}" style="height: 200px; object-fit: contain;">
+            <div class="card-body">
+              <h5 class="card-title">{{ carta.nombre }}</h5>
+              <p class="card-text">{{ carta.descripcion|truncatechars:100 }}</p>
+            </div>
+          </div>
+          {% endfor %}
+
         </div>
       </div>
       {% endfor %}
+
     </div>
+
     <button class="carousel-control-prev" type="button" data-bs-target="#cartasCarousel" data-bs-slide="prev">
       <span class="carousel-control-prev-icon"></span>
+      <span class="visually-hidden">Anterior</span>
     </button>
     <button class="carousel-control-next" type="button" data-bs-target="#cartasCarousel" data-bs-slide="next">
       <span class="carousel-control-next-icon"></span>
+      <span class="visually-hidden">Siguiente</span>
     </button>
   </div>
 </div>

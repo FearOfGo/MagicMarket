@@ -1,0 +1,39 @@
+[
+    {
+        "model" : "cartas.carta",
+        "pk": 1,
+        "fields": {
+            "nombre": "Carta ejemplo 1",
+            "edicion" : "Edición 2025",
+            "precio" : "1000",
+            "usuario": 1,
+            "imagen": "cartas_imagenes/carta1.jpg",
+            "fecha_agregada" : "2025-06-05T12:00:00Z"
+        }
+    },
+
+    {
+        "model" : "cartas.carta",
+        "pk": 2,
+        "fields": {
+            "nombre": "Carta ejemplo 2",
+            "edicion" : "Edición 2025",
+            "precio" : "1000",
+            "usuario": 1,
+            "imagen": "cartas_imagenes/carta2.jpg",
+            "fecha_agregada" : "2025-06-05T12:00:00Z"
+        }
+    },
+     {
+        "model" : "cartas.carta",
+        "pk": 3,
+        "fields": {
+            "nombre": "Carta ejemplo 3",
+            "edicion" : "Edición 2025",
+            "precio" : "1000",
+            "usuario": 1,
+            "imagen": "cartas_imagenes/carta3.jpg",
+            "fecha_agregada" : "2025-06-05T12:00:00Z"
+        }
+    }
+]

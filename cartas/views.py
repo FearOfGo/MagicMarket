@@ -4,14 +4,15 @@ from django.contrib.auth.models import User
 from .forms import CartaForm
 
 def home(request):
-    cartas_populares = Carta.objects.order_by('-visitas')[:10]
+    cartas_populares = Carta.objects.all()[:9]  # Solo las primeras 9 cartas
     usuarios_top = User.objects.all()[:5]
-    
+
     contexto = {
         'cartas_populares': cartas_populares,
-        'usuarios_top' : usuarios_top
+        'usuarios_top': usuarios_top,
     }
     return render(request, 'cartas/home.html', contexto)
+
 
 
 def lista_cartas(request):
