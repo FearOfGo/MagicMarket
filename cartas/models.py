@@ -17,6 +17,7 @@ class Carta(models.Model):
     idioma = models.CharField(max_length=2, choices=IDIOMAS)
     precio = models.DecimalField(max_digits=10, decimal_places=2)
     descripcion = models.TextField(blank=True)
+    visitas = models.PositiveIntegerField(default=0)
 
 
 

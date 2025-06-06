@@ -7,13 +7,13 @@
     {% if cartas %}
     <ul>
         {% for carta in cartas %}
-        <li>
-            <strong>{{ carta.nombre }}</strong> - {{ carta.juego }} - ${{ carta.precio }}
-            {% id carta.imagen %}
-            <br><img src="{{ carta.imagen.url }}" width="100">
-            {% endif %}
-        </li>
-        {% endfor %}
+<li>
+    <strong>{{ carta.nombre }}</strong> - {{ carta.juego }} - ${{ carta.precio }}
+    {% if carta.imagen %}
+        <br><img src="{{ carta.imagen.url }}" width="100">
+    {% endif %}
+</li>
+{% endfor %}
     </ul>
     {% else %}
         <p>Este usuario no tiene cartas publicadas.</p>

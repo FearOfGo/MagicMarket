@@ -12,13 +12,13 @@
                 <span>Bienvenido, {{ user.username }}</span> |
                 <a href="{% url 'logout' %}">Cerrar sesión</a> |
                 <a href="{% url 'publicar_carta' %}">Publicar Carta</a> |
-                <a href="{% url 'perfil' %}">Mi Perfil</a>
+                <a href="{% url 'perfil_usuario' user.username %}">Mi Perfil</a>
             {% else %}
                 <a href="{% url 'login' %}">Iniciar sesión</a> |
                 <a href="{% url 'register' %}">Registrarse</a>
             {% endif %}
         </nav>
-        <form method="get" action="{% url 'buscar_cartas' %}">
+        <form method="get" action=".">
             <input type="text" name="q" placeholder="Buscar carta...">
             <button type="submit">Buscar</button>
         </form>

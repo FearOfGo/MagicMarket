@@ -41,3 +41,8 @@ def perfil_usuario(request, username):
         'usuario_perfil' : usuario,
         'cartas' : cartas,
     })
+
+def buscar_cartas(request):
+    query = request.GET.get('q', '')
+    cartas = Carta.objects.filter(nombre__icontains=query)
+    return render(request, 'cartas/buscar.html', {'cartas': cartas, 'query': query})
