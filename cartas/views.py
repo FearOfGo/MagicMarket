@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Carta
+from django.contrib.auth.models import User
 from .forms import CartaForm
 
 def home(request):
@@ -31,3 +32,12 @@ def nueva_carta(request):
     else:
         form = CartaForm(usuario=request.user)
     return render(request, 'cartas/nueva_carta.html', {'form': form})
+
+def perfil_usuario(request, username):
+    usuario = get_object_or_404(User, username=username)
+    cartas = Carta.objects.filter(usuario=usuario)
+
+    return render(request, 'cartas/perfil.html', {
+        'usuario_perfil' : usuario,
+        'cartas' : cartas,
+    })
